@@ -1,6 +1,3 @@
-<?php header('Content-Type: application/json;charset=utf-8');
-mysql_set_charset('utf8'); 
- ?>
 <?php
 header('Access-Control-Allow-Origin: *');
 
@@ -12,7 +9,7 @@ try {
 
 	
 	
-    $dbh = new PDO("firebird:dbname=localhost:c:\wamp\www\services\BASE_AG.FDB", "SYSDBA", "masterkey");
+    $dbh = new PDO("firebird:dbname=localhost:G:\wamp\www\john\services\BASE_AG.FDB", "SYSDBA", "masterkey");
 
 	/*$dbh = new PDO("mysql:host=$dbhost;dbname=$dbname", $dbuser, $dbpass);*/	
 	$dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
