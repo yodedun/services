@@ -5,8 +5,8 @@ mysql_set_charset('utf8');
 
 header('Access-Control-Allow-Origin: *');
 
-$sql = "SELECT es.nombre, es.direccion, em.cod_eds, em.cod_tecnico, em.evento, em.fecha_hora_asignacion
-FROM 	ag_emergencias em, ag_estacion es where  em.cod_eds = es.codigo and em.activo=1 and em.COD_TECNICO = :userID" ;
+$sql = "SELECT es.nombre, es.direccion, em.cod_eds, em.cod_tecnico, em.evento, em.fecha_hora_asignacion , em.fecha_hora_llegada
+FROM 	ag_emergencias em, ag_estacion es where  em.cod_eds = es.codigo and em.activo=1 and em.cod_eds = :edsID" ;
 
 try {
 
@@ -16,7 +16,7 @@ try {
 	/*$dbh = new PDO("mysql:host=$dbhost;dbname=$dbname", $dbuser, $dbpass);*/	
 	$dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	$stmt = $dbh->prepare($sql);  
-	$stmt->bindParam("userID", $_GET["userId"]);
+	$stmt->bindParam("edsID", $_GET["id"]);
 	$stmt->execute();	
 	$usuario = $stmt->fetchAll(PDO::FETCH_OBJ);
 	$dbh = null;	
